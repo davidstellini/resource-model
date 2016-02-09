@@ -11,15 +11,24 @@ export abstract class Resource<T extends IModel>{
       this.instantiatibleModel = typeScriptObjWithCtor;
     }
 
-    getEmpty() : T {
+    get() : T {
       return new this.instantiatibleModel();
     }
+
+    put() : Promise<T>{
+      return this.api.save(this.getBaseUrl(), this.toJSON(this.model));
+    }
+
+    delete() : Promise<T>{
+      
+    }
+
 }
 
 export function BaseUrl(url: string) {
     return function <TFunction extends Function>(Target: TFunction): TFunction {
         Target.prototype.getBaseUrl = function() {
-            return this.api.baseURL + url;
+            return url;
         };
         return Target;
     };

@@ -1,4 +1,4 @@
-export abstract class IModel {
+export class IModel  {
 
   toJSON() : Object {
     return null;

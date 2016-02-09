@@ -3,8 +3,13 @@ var Resource = (function () {
     function Resource(typeScriptObjWithCtor) {
         this.instantiatibleModel = typeScriptObjWithCtor;
     }
-    Resource.prototype.getEmpty = function () {
+    Resource.prototype.get = function () {
         return new this.instantiatibleModel();
+    };
+    Resource.prototype.put = function () {
+        return this.api.save(this.getBaseUrl(), this.toJSON(this.model));
+    };
+    Resource.prototype.delete = function () {
     };
     return Resource;
 }());
@@ -12,7 +17,7 @@ exports.Resource = Resource;
 function BaseUrl(url) {
     return function (Target) {
         Target.prototype.getBaseUrl = function () {
-            return this.api.baseURL + url;
+            return url;
         };
         return Target;
     };
