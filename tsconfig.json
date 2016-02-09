@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "outDir": "build"
+  },
+  "files": [
+    "./typings/tsd.d.ts",
+    "./typings/es6-promise/es6-promise.d.ts",
+    "src/examples/example.ts"
+  ]
+}

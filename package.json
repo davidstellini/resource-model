@@ -1,0 +1,33 @@
+{
+  "name": "resource-model",
+  "version": "1.0.0",
+  "description": "Allows usage of POTOs (Plain old TypeScript Objects) as models for data layer such as API resource.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node node_modules/.bin/webpack-dev-server --content-base build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmifsud/resource-model.git"
+  },
+  "keywords": [
+    "typescript",
+    "model",
+    "data",
+    "layer",
+    "resource",
+    "api"
+  ],
+  "author": "David Mifsud",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmifsud/resource-model/issues"
+  },
+  "homepage": "https://github.com/dmifsud/resource-model#readme",
+  "devDependencies": {
+    "es6-promise": "^3.0.2",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
