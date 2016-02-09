@@ -15,10 +15,8 @@ class UserModel implements IModel{
 }
 
 
-
-// @BaseUrl("/user")
 export class UserResource extends Resource<UserModel>{
-  // model: UserModel;
+  
   getUrl() : string {
     return "/user";
   }

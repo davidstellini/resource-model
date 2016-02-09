@@ -24,9 +24,10 @@ $ npm start
       addresses: Array<AddressModel>;
     }
     //API RESOURCE REFERENCE
-    @BaseUrl("/user")
     class UserResource extends Resource{
-      model: UserModel;
+      getUrl() : string {
+        return "/user";
+      }
     }
 
 ##### Data Layer
@@ -51,10 +52,8 @@ $ npm start
 ##### Case Scenario
     //An application should have only one instance of DataLayer
     var API = new MyAPI();
-    //Create an empty user model
-    var dave = new UserModel();
     //Setup a new resource for user, assigning our API datalayer and empty user model
-    var userResource = new UserResource(API, dave);
+    var userResource = new UserResource(API, UserModel);
 
     //calling our API via resource
 
