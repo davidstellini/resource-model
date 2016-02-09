@@ -16,7 +16,8 @@
     "./typings/es6-promise/es6-promise.d.ts",
     "src/examples/example.ts",
     "src/lib/classes/Resource.ts",
-    "src/lib/interfaces/IAPI.ts",
+    "src/lib/interfaces/IModelAPI.ts",
+    "src/lib/interfaces/IModelListAPI.ts",
     "src/lib/interfaces/IModel.ts",
     "src/lib/interfaces/ICtor.ts"
   ]
