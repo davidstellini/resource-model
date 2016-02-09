@@ -1,7 +1,7 @@
 var Resource = (function () {
-    function Resource(api, model) {
+    function Resource(api, modelWithctor) {
         this.api = api;
-        this.model = model;
+        this.instantiatibleModel = modelWithctor;
     }
     Resource.prototype.getBaseUrl = function () {
         return null;
@@ -24,8 +24,9 @@ var Resource = (function () {
     };
     Resource.prototype.get = function () {
         var _this = this;
-        return this.api.get(this.getBaseUrl()).then(function (data) {
-            return _this.toInstance(_this.model, data);
+        var url = this.getBaseUrl();
+        return this.api.get(url).then(function (data) {
+            return _this.toInstance(new _this.instantiatibleModel(), data);
         });
     };
     Resource.prototype.delete = function () {

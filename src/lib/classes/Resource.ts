@@ -2,9 +2,16 @@ import {IAPI} from "../interfaces/IAPI";
 import {IModel} from "../interfaces/IModel";
 import {Promise} from "es6-promise";
 
-export class Resource{
+
+
+export abstract class Resource<T extends IModel>{
   api : IAPI;
-  model: IModel;
+  model: T;
+  instantiatibleModel : new() => T;
+  models: Array<IModel>;
+
+
+  abstract getUrl() : string;
 
   //Annotation Methods
   protected getBaseUrl(): string {
@@ -12,14 +19,17 @@ export class Resource{
   }
 
   //helper methods
-  private toInstance<T>(obj: T, json: T) : T {
+  private toInstance(obj: any, json: any) : any {
+
+    //return new T();
+
       for (var propName in json) {
           obj[propName] = json[propName]
       }
       return obj;
   }
 
-  private toJSON<T>(obj: T){
+  private toJSON(obj: any) : any{
     var jsonObj = {};
     for (var propName in obj){
       jsonObj[propName] = obj[propName];
@@ -27,23 +37,37 @@ export class Resource{
     return jsonObj;
   }
 
-
-  constructor(api : IAPI, model: IModel){
+  constructor(api : IAPI,  modelWithctor : { new(): T }){
     this.api = api;
-    this.model = model;
+    this.instantiatibleModel = modelWithctor;
+  //  this.model = modelType;
+   // this.modelTest = new ({new(): modelType; })();
   }
 
-  save() : Promise<IModel>{
+  save() : Promise<T>{
     return this.api.save(this.getBaseUrl(), this.toJSON(this.model));
   }
 
-  get(): Promise<IModel>{
-    return this.api.get(this.getBaseUrl()).then((data) => {
-      return this.toInstance(this.model, data);
+  get(): Promise<T>{
+    var url : string = this.getBaseUrl();
+
+      //var inst = new this.instantiatibleModel();
+
+
+
+    // if (this.model.id){ //or ference model map
+    //   url += "/" + this.model.id;
+    //   isList = false;
+    // }
+
+    return this.api.get(url).then((data) => {
+
+        return this.toInstance(new this.instantiatibleModel(), data);
+
     });
   }
 
-  delete(): Promise<IModel>{
+  delete(): Promise<T>{
     return this.api.delete(this.getBaseUrl())
       .then(() => this.model);
   }

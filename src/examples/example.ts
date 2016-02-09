@@ -11,19 +11,21 @@ class UserModel implements IModel{
 
   surname: string;
 
-  //addresses: Array<AddressModel>;
-
+  // addresses: Array<AddressModel>;
 }
 
-@BaseUrl("/user")
-export class UserResource extends Resource{
-  model: UserModel;
+
+
+// @BaseUrl("/user")
+export class UserResource extends Resource<UserModel>{
+  // model: UserModel;
+  getUrl() : string {
+    return "/user";
+  }
 }
 
-var user = new UserResource(new API(), new UserModel());
+var user = new UserResource(new API(), UserModel);
 
-user.model.id = 42;
-
-user.get().then(model => {
-  console.log(model);
+user.get().then(data => {data
+  console.log(data);
 });
