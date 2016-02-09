@@ -1,13 +1,10 @@
-export interface IModel {
+export abstract class IModel {
 
+  toJSON() : Object {
+    return null;
+  }
 
-
-  // toJSON() : Object {
-  //   return null;
-  // }
-  //
-  // fromJSON(json : Object) : IModel {
-  //   return null;
-  // }
-
+  fromJSON(json : Object) : IModel {
+    return null;
+  }
 }

@@ -17,6 +17,7 @@
     "src/examples/example.ts",
     "src/lib/classes/Resource.ts",
     "src/lib/interfaces/IAPI.ts",
-    "src/lib/interfaces/IModel.ts"
+    "src/lib/interfaces/IModel.ts",
+    "src/lib/interfaces/ICtor.ts"
   ]
 }

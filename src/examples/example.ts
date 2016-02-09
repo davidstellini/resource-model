@@ -3,11 +3,11 @@ import {Resource,BaseUrl} from "../lib/classes/Resource";
 import {IModel} from "../lib/interfaces/IModel";
 
 
-class UserModel implements IModel{
+class UserModel extends IModel {
 
   id: number;
 
-  name: string;
+  name: string="defaultName";
 
   surname: string;
 
@@ -16,14 +16,15 @@ class UserModel implements IModel{
 
 
 export class UserResource extends Resource<UserModel>{
-  
+  constructor(){
+    super(UserModel);
+  }
+
   getUrl() : string {
     return "/user";
   }
 }
 
-var user = new UserResource(new API(), UserModel);
-
-user.get().then(data => {data
-  console.log(data);
-});
+var userResourceService = new UserResource();
+var user = userResourceService.getEmpty();
+console.log(user.name);
