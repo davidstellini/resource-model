@@ -1,10 +1,10 @@
 import {Promise} from "es6-promise";
 
-export interface IAPI{
+export interface IModelApi<T extends IModel>{
 
   baseURL : string;
 
-  save(url : string, model : any) : Promise<any>;
+  put(url : string, model : T) : Promise<any>;
 
   get(url : string) : Promise<any>;
 
