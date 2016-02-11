@@ -46,4 +46,8 @@ var APIService = (function () {
     return APIService;
 }());
 APIService.init();
+var svc = APIService.UserListApiService;
+var user = new UserModel();
+user.id = '10';
+svc.getItem(user);
 //# sourceMappingURL=example.js.map

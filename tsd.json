@@ -5,7 +5,19 @@
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
   "installed": {
-    "es6-promise/es6-promise.d.ts": {
+    "request-promise/request-promise.d.ts": {
+      "commit": "44c9273e1e92bc95368f599d1dcda9f560a68956"
+    },
+    "request/request.d.ts": {
+      "commit": "44c9273e1e92bc95368f599d1dcda9f560a68956"
+    },
+    "node/node.d.ts": {
+      "commit": "44c9273e1e92bc95368f599d1dcda9f560a68956"
+    },
+    "form-data/form-data.d.ts": {
+      "commit": "44c9273e1e92bc95368f599d1dcda9f560a68956"
+    },
+    "bluebird/bluebird.d.ts": {
       "commit": "44c9273e1e92bc95368f599d1dcda9f560a68956"
     }
   }

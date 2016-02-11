@@ -21,7 +21,7 @@ class APIService {
 
   private static _UserListApiService : RequestApiModelList<RequestApiModel<UserModel>, UserModel>  = null;
 
-  get UserListApiService() : RequestApiModelList<RequestApiModel<UserModel>, UserModel> {
+  public get UserListApiService() : RequestApiModelList<RequestApiModel<UserModel>, UserModel> {
     return APIService._UserListApiService;
   }
 
@@ -30,12 +30,16 @@ class APIService {
     APIService._UserListApiService = new RequestApiModelList<RequestApiModel<UserModel>, UserModel>
     (req, "/api/users");
 
+
   }
 }
 
 
 APIService.init();
-
+var svc = APIService.UserListApiService;
+var user = new UserModel();
+user.id = '10';
+svc.getItem(user);
 
 
 //
