@@ -11,14 +11,17 @@
     "sourceMap": true,
     "outDir": "build"
   },
+  "exclude": [
+    "node_modules"
+  ],
   "files": [
     "./typings/tsd.d.ts",
-    "./typings/es6-promise/es6-promise.d.ts",
     "src/examples/example.ts",
-    "src/lib/classes/Resource.ts",
-    "src/lib/interfaces/IModelAPI.ts",
-    "src/lib/interfaces/IModelListAPI.ts",
-    "src/lib/interfaces/IModel.ts",
-    "src/lib/interfaces/ICtor.ts"
+    "src/examples/RequestApiModel.ts",
+    "src/examples/RequestApiModelList.ts",
+    "src/lib/interfaces/IAsyncModel.ts",
+    "src/lib/interfaces/IAsyncModelList.ts",
+    "src/lib/interfaces/ICtor.ts",
+    "src/lib/interfaces/IModel.ts"
   ]
 }
