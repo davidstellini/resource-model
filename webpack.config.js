@@ -10,16 +10,8 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    noParse: /node_modules\/json-schema\/lib\/validate\.js/,
     loaders: [
-      { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /\.json$/, loader: "json-loader" }
+      { test: /\.ts$/, loader: 'ts-loader' },
     ]
-  },
-  node : {
-    console: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
   }
 };
