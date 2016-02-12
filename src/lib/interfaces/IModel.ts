@@ -1,4 +1,7 @@
-export abstract class IModel {
+import {Serializable} from "./ISerializable";
+
+export abstract class IModel extends Serializable {
+
 
   //Dynamically get index based on which property was marked with
   //@indexKey annotation.

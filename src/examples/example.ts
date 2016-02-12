@@ -7,7 +7,7 @@ import {RequestApiModel} from "../examples/RequestApiModel";
 
 //These classes should be generated:
 //==================================================================
-class UserModel extends IModel {
+class UserModel extends IModel  {
   @indexKey
   id: number;
 
@@ -19,7 +19,11 @@ class UserModel extends IModel {
 
 class UserModelApi extends RequestApiModel<UserModel>{
   static getBaseUrl(){
-    return "/api/users";
+    return "http://localhost:3010/pegasus-ci/api/users";
+  }
+
+  public otherCustomMethod() : void {
+
   }
 
   constructor(){
@@ -29,15 +33,13 @@ class UserModelApi extends RequestApiModel<UserModel>{
 //==================================================================
 
 class APIService {
-  private static _UserListApiService : RequestApiModelList<UserModelApi>  = null;
-  static get UserListApiService() : RequestApiModelList<UserModelApi> {
+  private static _UserListApiService : RequestApiModelList<UserModel, UserModelApi>  = null;
+  static get UserListApiService() : RequestApiModelList<UserModel, UserModelApi> {
     return APIService._UserListApiService;
   }
 
   public static init(){
-    //Hack. We can't pass  RequestApiModel<UserModel> directly because type info is removed.
-    var req = new UserModelApi();
-    APIService._UserListApiService = new RequestApiModelList<UserModelApi>(req, UserModelApi.getBaseUrl())
+    APIService._UserListApiService = new RequestApiModelList<UserModel, UserModelApi>(UserModel,  UserModelApi, UserModelApi.getBaseUrl())
   }
 }
 
@@ -72,4 +74,13 @@ userListSvc.addItem(newUser).then(function(user){
   //Print ID from user returned via generics
   console.log(user.model.id);
   user.delete();
+});
+
+userListSvc.getAll().then(users => {
+  var user = users[0];
+
+  user.model.name = "Daniel";
+ user.otherCustomMethod();
+ 
+  user.save();
 });

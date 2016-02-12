@@ -15,9 +15,12 @@
     "./typings/tsd.d.ts",
     "src/examples/example.ts",
     "src/examples/RequestApiModel.ts",
+
     "src/examples/RequestApiModelList.ts",
     "src/lib/interfaces/IAsyncModel.ts",
     "src/lib/interfaces/IAsyncModelList.ts",
+    "src/lib/interfaces/ISerializable.ts",
+    
     "src/lib/interfaces/ICtor.ts",
     "src/lib/interfaces/IModel.ts"
   ]

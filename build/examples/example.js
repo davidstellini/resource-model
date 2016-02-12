@@ -34,7 +34,9 @@ var UserModelApi = (function (_super) {
         _super.call(this, UserModel);
     }
     UserModelApi.getBaseUrl = function () {
-        return "/api/users";
+        return "http://localhost:3010/pegasus-ci/api/users";
+    };
+    UserModelApi.prototype.otherCustomMethod = function () {
     };
     return UserModelApi;
 }(RequestApiModel_1.RequestApiModel));
@@ -49,8 +51,7 @@ var APIService = (function () {
         configurable: true
     });
     APIService.init = function () {
-        var req = new UserModelApi();
-        APIService._UserListApiService = new RequestApiModelList_1.RequestApiModelList(req, UserModelApi.getBaseUrl());
+        APIService._UserListApiService = new RequestApiModelList_1.RequestApiModelList(UserModel, UserModelApi, UserModelApi.getBaseUrl());
     };
     APIService._UserListApiService = null;
     return APIService;
@@ -70,5 +71,11 @@ newUser.surname = "Stellini";
 userListSvc.addItem(newUser).then(function (user) {
     console.log(user.model.id);
     user.delete();
+});
+userListSvc.getAll().then(function (users) {
+    var user = users[0];
+    user.model.name = "Daniel";
+    user.otherCustomMethod();
+    user.save();
 });
 //# sourceMappingURL=example.js.map
