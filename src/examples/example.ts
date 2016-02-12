@@ -49,8 +49,8 @@ console.log(emptyUser.getIndex());
 //Get user asynchronously
 var userFromWebService = userListSvc.getItem('10').then(function(user){
   //Set model value
-  user.model.name = "David";
-  user.save(); //Save -> Make PUT request.
+  user.model.name = "David"; //User type is accessible via generics
+  user.save(); //Save -> Make PUT request directly from type returned by service.
 });
 
 //Create new empty model
