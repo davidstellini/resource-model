@@ -32,17 +32,6 @@ class UserModelApi extends RequestApiModel<UserModel>{
 }
 //==================================================================
 
-class APIService {
-  private static _UserListApiService : RequestApiModelList<UserModel, UserModelApi>  = null;
-  static get UserListApiService() : RequestApiModelList<UserModel, UserModelApi> {
-    return APIService._UserListApiService;
-  }
-
-  public static init(){
-    APIService._UserListApiService = new RequestApiModelList<UserModel, UserModelApi>(UserModel,  UserModelApi, UserModelApi.getBaseUrl())
-  }
-}
-
 
 //Init API:
 APIService.init();
@@ -84,3 +73,19 @@ userListSvc.getAll().then(users => {
 
   user.save();
 });
+
+
+
+
+
+// Just an example, we need to work on this
+class APIService {
+  private static _UserListApiService : RequestApiModelList<UserModel, UserModelApi>  = null;
+  static get UserListApiService() : RequestApiModelList<UserModel, UserModelApi> {
+    return APIService._UserListApiService;
+  }
+
+  public static init(){
+    APIService._UserListApiService = new RequestApiModelList<UserModel, UserModelApi>(UserModel,  UserModelApi, UserModelApi.getBaseUrl())
+  }
+}
