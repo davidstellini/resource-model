@@ -1,4 +1,5 @@
-interface ICtor<T> {
-//Must have new constructor
- new(): T;
+import {IModel} from "./IModel";
+
+export interface ICtor<T extends IModel>{
+  new() : T;
 }

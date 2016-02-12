@@ -1,4 +1,4 @@
-export abstract class IModel  {
+export abstract class IModel {
 
   //Dynamically get index based on which property was marked with
   //@indexKey annotation.

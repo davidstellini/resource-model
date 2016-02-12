@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "start": "node node_modules/.bin/webpack-dev-server --content-base build"
+    "start": "node node_modules/.bin/webpack-dev-server --content-base build --port 8090"
   },
   "repository": {
     "type": "git",

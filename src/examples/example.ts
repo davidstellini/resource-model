@@ -4,56 +4,72 @@ import {IAsyncModel} from "../lib/interfaces/IAsyncModel";
 import {RequestApiModelList} from "../examples/RequestApiModelList";
 import {RequestApiModel} from "../examples/RequestApiModel";
 
+
+//These classes should be generated:
+//==================================================================
 class UserModel extends IModel {
   @indexKey
   id: number;
+
+  //TODO: @optional annotation.
   name: string="defaultName";
   surname: string;
   // addresses: Array<AddressModel>;
 }
-/*
-class UserAsyncModel extends UserModel implements IAsyncModel {
 
+class UserModelApi extends RequestApiModel<UserModel>{
+  static getBaseUrl(){
+    return "/api/users";
+  }
+
+  constructor(){
+    super(UserModel);
+  }
 }
-*/
+//==================================================================
+
 class APIService {
-
-
-  private static _UserListApiService : RequestApiModelList<RequestApiModel<UserModel>, UserModel>  = null;
-
-  public get UserListApiService() : RequestApiModelList<RequestApiModel<UserModel>, UserModel> {
+  private static _UserListApiService : RequestApiModelList<UserModelApi>  = null;
+  static get UserListApiService() : RequestApiModelList<UserModelApi> {
     return APIService._UserListApiService;
   }
 
   public static init(){
-    var req = new RequestApiModel<UserModel>(UserModel);
-    APIService._UserListApiService = new RequestApiModelList<RequestApiModel<UserModel>, UserModel>
-    (req, "/api/users");
-
-
+    //Hack. We can't pass  RequestApiModel<UserModel> directly because type info is removed.
+    var req = new UserModelApi();
+    APIService._UserListApiService = new RequestApiModelList<UserModelApi>(req, UserModelApi.getBaseUrl())
   }
 }
 
 
+//Init API:
 APIService.init();
-var svc = APIService.UserListApiService;
-var user = new UserModel();
-user.id = '10';
-svc.getItem(user);
+var userListSvc = APIService.UserListApiService;
 
 
-//
-//
-// export class UserResource extends Resource<UserModel>{
-//   constructor(){
-//     super(UserModel);
-//   }
-//
-//   getUrl() : string {
-//     return "/user";
-//   }
-// }
 
-// var userResourceService = new UserResource();
-//var user = userResourceService.getEmpty();
-//console.log(user.name);
+//Create empty instance.
+var emptyUser = new UserModel();
+emptyUser.id = 10;
+
+//Get index from field marked dynamically.
+console.log(emptyUser.getIndex());
+
+//Get user asynchronously
+var userFromWebService = userListSvc.getItem('10').then(function(user){
+  //Set model value
+  user.model.name = "David";
+  user.save(); //Save -> Make PUT request.
+});
+
+//Create new empty model
+var newUser = new UserModel();
+newUser.name = "David 2";
+newUser.surname = "Stellini";
+
+//Add model using API.
+userListSvc.addItem(newUser).then(function(user){
+  //Print ID from user returned via generics
+  console.log(user.model.id);
+  user.delete();
+});

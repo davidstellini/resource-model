@@ -28,10 +28,20 @@ var UserModel = (function (_super) {
     ], UserModel.prototype, "id", void 0);
     return UserModel;
 }(IModel_1.IModel));
+var UserModelApi = (function (_super) {
+    __extends(UserModelApi, _super);
+    function UserModelApi() {
+        _super.call(this, UserModel);
+    }
+    UserModelApi.getBaseUrl = function () {
+        return "/api/users";
+    };
+    return UserModelApi;
+}(RequestApiModel_1.RequestApiModel));
 var APIService = (function () {
     function APIService() {
     }
-    Object.defineProperty(APIService.prototype, "UserListApiService", {
+    Object.defineProperty(APIService, "UserListApiService", {
         get: function () {
             return APIService._UserListApiService;
         },
@@ -39,15 +49,26 @@ var APIService = (function () {
         configurable: true
     });
     APIService.init = function () {
-        var req = new RequestApiModel_1.RequestApiModel(UserModel);
-        APIService._UserListApiService = new RequestApiModelList_1.RequestApiModelList(req, "/api/users");
+        var req = new UserModelApi();
+        APIService._UserListApiService = new RequestApiModelList_1.RequestApiModelList(req, UserModelApi.getBaseUrl());
     };
     APIService._UserListApiService = null;
     return APIService;
 }());
 APIService.init();
-var svc = APIService.UserListApiService;
-var user = new UserModel();
-user.id = '10';
-svc.getItem(user);
+var userListSvc = APIService.UserListApiService;
+var emptyUser = new UserModel();
+emptyUser.id = 10;
+console.log(emptyUser.getIndex());
+var userFromWebService = userListSvc.getItem('10').then(function (user) {
+    user.model.name = "David";
+    user.save();
+});
+var newUser = new UserModel();
+newUser.name = "David 2";
+newUser.surname = "Stellini";
+userListSvc.addItem(newUser).then(function (user) {
+    console.log(user.model.id);
+    user.delete();
+});
 //# sourceMappingURL=example.js.map
