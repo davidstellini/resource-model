@@ -19,7 +19,7 @@ class UserModel extends IModel  {
 
 class UserModelApi extends RequestApiModel<UserModel>{
   static getBaseUrl(){
-    return "http://localhost:3010/pegasus-ci/api/users";
+    return "http://localhost:3010//api/users";
   }
 
   public otherCustomMethod() : void {
@@ -81,6 +81,6 @@ userListSvc.getAll().then(users => {
 
   user.model.name = "Daniel";
  user.otherCustomMethod();
- 
+
   user.save();
 });

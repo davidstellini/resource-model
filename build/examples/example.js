@@ -34,7 +34,7 @@ var UserModelApi = (function (_super) {
         _super.call(this, UserModel);
     }
     UserModelApi.getBaseUrl = function () {
-        return "http://localhost:3010/pegasus-ci/api/users";
+        return "http://localhost:3010//api/users";
     };
     UserModelApi.prototype.otherCustomMethod = function () {
     };
