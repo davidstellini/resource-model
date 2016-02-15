@@ -11,17 +11,41 @@
     "sourceMap": true,
     "outDir": "build"
   },
+  "exclude": [
+    "node_modules"
+  ],
+  "filesGlob": [
+    "**/*.ts",
+    "**/*.tsx",
+    "!node_modules/**"
+  ],
   "files": [
-    "./typings/tsd.d.ts",
     "src/examples/example.ts",
-    "src/examples/RequestApiModel.ts",
-
-    "src/examples/RequestApiModelList.ts",
-    "src/lib/interfaces/IAsyncModel.ts",
-    "src/lib/interfaces/IAsyncModelList.ts",
-    "src/lib/interfaces/ISerializable.ts",
-    
+    "src/examples/Implementation/Config/config.ts",
+    "src/examples/Implementation/Data/AddressData.ts",
+    "src/examples/Implementation/Data/AddressListData.ts",
+    "src/examples/Implementation/Data/UserData.ts",
+    "src/examples/Implementation/Data/UserDataList.ts",
+    "src/examples/Implementation/Model/AddressModel.ts",
+    "src/examples/Implementation/Model/UserModel.ts",
+    "src/examples/Implementation/Service/UserService.ts",
+    "src/lib/classes/Helper/List.ts",
+    "src/lib/interfaces/Data/IData.ts",
+    "src/lib/interfaces/Data/IDataAsync.ts",
+    "src/lib/interfaces/Data/IDataList.ts",
+    "src/lib/interfaces/Data/IDataListAsync.ts",
     "src/lib/interfaces/ICtor.ts",
-    "src/lib/interfaces/IModel.ts"
-  ]
+    "src/lib/interfaces/Model/IModel.ts",
+    "src/lib/interfaces/Model/ISerializable.ts",
+    "src/lib/interfaces/Service/Service.ts",
+    "typings/bluebird/bluebird.d.ts",
+    "typings/form-data/form-data.d.ts",
+    "typings/node/node.d.ts",
+    "typings/request-promise/request-promise.d.ts",
+    "typings/request/request.d.ts",
+    "typings/tsd.d.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
 }
