@@ -32,6 +32,8 @@
     "bluebird": "^3.2.2",
     "cls-bluebird": "^1.0.1",
     "continuation-local-storage": "^3.1.6",
+    "dojo": "^1.10.4",
+    "es6-collections": "^0.5.5",
     "json-loader": "^0.5.4",
     "request-promise": "^2.0.0",
     "ts-loader": "^0.8.0",
@@ -39,5 +41,8 @@
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1",
     "webpack-stream": "^3.1.0"
+  },
+  "dependencies": {
+    "typescript-collections": "^1.0.5"
   }
 }

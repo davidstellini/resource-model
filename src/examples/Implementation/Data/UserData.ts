@@ -14,18 +14,9 @@ export class UserData implements IDataAsync<UserModel> {
     this.model = model || new UserModel();
   }
 
-  static read(payload : string) : UserData{
-    let parsedObj : UserData = new UserData();
-    try {
-      parsedObj = new UserData((new UserModel()).parse<UserModel>(payload));
-      return parsedObj;
-    } catch (ex) {
-      return null;
-    };
-  }
 
   save() : Promise<UserModel> {
-    return this.makePromiseReq('POST');
+    return this.makePromiseReq('PUT');
   }
 
   delete() : Promise<UserModel>{
@@ -36,7 +27,7 @@ export class UserData implements IDataAsync<UserModel> {
   private makePromiseReq(type : string) : Promise<UserModel>{
     var options = {
       method : type,
-      uri : Config.BASEURL + '/users',
+      uri : Config.BASEURL + '/users/' + this.model.getIndex(),
       body : this.model,
       json : true
     }

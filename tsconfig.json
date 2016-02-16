@@ -11,13 +11,11 @@
     "sourceMap": true,
     "outDir": "build"
   },
-  "exclude": [
-    "node_modules"
-  ],
   "filesGlob": [
-    "**/*.ts",
-    "**/*.tsx",
-    "!node_modules/**"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "typings/**/*.ts",
+    "typings/**/*.tsx"
   ],
   "files": [
     "src/examples/example.ts",
@@ -34,11 +32,12 @@
     "src/lib/interfaces/Data/IDataAsync.ts",
     "src/lib/interfaces/Data/IDataList.ts",
     "src/lib/interfaces/Data/IDataListAsync.ts",
-    "src/lib/interfaces/ICtor.ts",
+    "src/lib/interfaces/Model/ICtor.ts",
     "src/lib/interfaces/Model/IModel.ts",
     "src/lib/interfaces/Model/ISerializable.ts",
     "src/lib/interfaces/Service/Service.ts",
     "typings/bluebird/bluebird.d.ts",
+    "typings/es6-collections/es6-collections.d.ts",
     "typings/form-data/form-data.d.ts",
     "typings/node/node.d.ts",
     "typings/request-promise/request-promise.d.ts",

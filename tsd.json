@@ -19,6 +19,12 @@
     },
     "bluebird/bluebird.d.ts": {
       "commit": "44c9273e1e92bc95368f599d1dcda9f560a68956"
+    },
+    "dojo/dojox.collections.d.ts": {
+      "commit": "85af69c91599a6c904618545f0613970e1ff3f64"
+    },
+    "dojo/dojo.d.ts": {
+      "commit": "85af69c91599a6c904618545f0613970e1ff3f64"
     }
   }
 }

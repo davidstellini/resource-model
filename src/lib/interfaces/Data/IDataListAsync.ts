@@ -3,7 +3,7 @@ import {IData} from "./IData";
 import {IDataAsync} from "./IDataAsync";
 import {List} from "../../classes/Helper/List";
 
-export interface IDataListAsync<BaseType extends IModel, T extends IData<BaseType>>  {
+export interface IDataListAsync<BaseType extends IModel, T extends IDataAsync<BaseType>>  {
   getItem(emptyModelWithID : IModel) : Promise<T>;
   exists(emptyModelWithID : IModel) : Promise<boolean>;
   getAllItems() : Promise<List<T>>;

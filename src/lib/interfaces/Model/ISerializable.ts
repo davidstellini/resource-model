@@ -11,16 +11,16 @@ export interface ISerializable {
 
 
 export  abstract class Serializable implements ISerializable{
-  FromJson(Object) : void{
-      Object.forEach((property) => {
-        this[property] = Object[property]; //dangerous. Ideally we register the
+  FromJson(obj : any) : void{
+      for (let property in obj) {
+        this[property] = obj[property]; //dangerous. Ideally we register the
         // serializable classes on initialization so that we don't set properties
         // in "Object" that don't exist in "this". This also has the advantage of
         // allowing dynamic initialization of the class without knowing the Type
         // ahead of time.
 
         //Also, recursion for nested properties??
-      });
+      };
   }
 
   Stringify() : string{

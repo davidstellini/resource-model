@@ -32,7 +32,7 @@ export class UserDataList
     return new Promise<UserData>( (resolve, reject) =>{
       requestPromise(options).promise().then((response) =>
       {
-          resolve(UserData.read(response));
+        resolve(new UserData((new UserModel()).parse<UserModel>(response)));
       });
     });
   }
@@ -47,10 +47,13 @@ export class UserDataList
     return new Promise<List<UserData>>( (resolve, reject) =>{
      requestPromise(options).promise().then((response) =>{
         var items : List<UserData>  = new List<UserData>();
-
-        response.payload.forEach(modelListItem =>
+        var resp = JSON.parse(response);
+        resp.payload.forEach(modelListItem =>
         {
-          items.add(UserData.read(response));
+          var model = new UserModel();
+          model.FromJson(modelListItem);
+
+          items.add(new UserData(model));
         });
 
         resolve(items);
@@ -70,7 +73,7 @@ export class UserDataList
          return new Promise<UserData>( (resolve, reject) =>{
            requestPromise(options).promise().then((response) =>
            {
-               resolve(UserData.read(response));
+               resolve(new UserData((new UserModel()).parse<UserModel>(response)));
            });
          });
        }
@@ -88,7 +91,7 @@ export class UserDataList
     return new Promise<UserData>( (resolve, reject) =>{
       requestPromise(options).promise().then((response) =>
       {
-          resolve(UserData.read(response));
+          resolve(new UserData((new UserModel()).parse<UserModel>(response)));
       });
     });
   }
