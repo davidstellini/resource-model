@@ -1,18 +1,19 @@
-import {UserDataList} from "./Implementation/Data/UserDataList";
-import {UserService} from "./Implementation/Service/UserService";
-import {UserData} from "./Implementation/Data/UserData";
+import {UserDataRepository} from "./Implementation/Data/UserDataRepository";
+import {UserServiceAsync} from "./Implementation/Service/UserServiceAsync";
+
 import {UserModel} from "./Implementation/Model/UserModel";
 
-var userDataLayer : UserDataList = new UserDataList();
-var userService : UserService<UserData> = new UserService(userDataLayer);
+var userDataLayer : UserDataRepository = new UserDataRepository();
+var userService : UserServiceAsync = new UserServiceAsync(userDataLayer);
 
 var userFromApiDataLayer : UserData;
+
 userService.getAllItems().then(users => {
   userFromApiDataLayer = users.first();
 
   userFromApiDataLayer.model.surname = "Stellini";
-  userFromApiDataLayer.save();
 
+  //userFromApiDataLayer.save();
 });
 
 
