@@ -1,52 +1,52 @@
-import {IDataRepositoryAsync} from "../../../lib/interfaces/Data/IDataListAsync";
-import {IDataAsync} from "../../../lib/interfaces/Data/IDataAsync";
 import {UserModel} from "../Model/UserModel";
 import {List} from "../../../lib/classes/Helper/List";
-import coll = require("es6-collections");
+import {UserDataRepository} from "../Data/UserDataRepository";
+import {AddressDataRepository} from "../Data/AddressDataRepository";
 
 export class UserServiceAsync {
 
-  //addressDataLayer : IData;
+  constructor(public userDataLayer :  UserDataRepository,
+              public addressDataLayer : AddressDataRepository) {}
 
-constructor(public userListDl :  IDataRepositoryAsync<UserModel>) {}
+  //Gets a user list with empty address
+  getUsers() : Promise<List<UserModel>>{
+    return this.userDataLayer.getAllItems();
+  }
 
-getUsers() : Promise<List<UserModel>>{
+  //Gets a user, filled up with addresses.
+  getUser(emptyModelWithID : UserModel) : Promise<UserModel> {
+     this.userDataLayer.getItem(emptyModelWithID).then(user => {
+       //addressDataLayer.getItem()
+     });
 
-  return this.userListDl.getAllItems();
-}
+     return null;
+  }
 
+  exists(emptyModelWithID : UserModel) : Promise<boolean> {
+      return this.userDataLayer.exists(emptyModelWithID);
+  }
 
-getItem(emptyModelWithID : UserModel) : Promise<UserModel> {
-  return this.userListDl.getItem(emptyModelWithID);
-}
+  getAllItems() : Promise<List<UserModel>> {
+      return this.userDataLayer.getAllItems();
+  }
 
-exists(emptyModelWithID : UserModel) : Promise<boolean> {
-    return this.userListDl.exists(emptyModelWithID);
-}
+  getRange(emptyModelWithIDList : List<UserModel>) : Promise<List<UserModel>> {
+      return this.userDataLayer.getRange(emptyModelWithIDList);
+  }
 
-getAllItems() : Promise<List<UserModel>> {
-    return this.userListDl.getAllItems();
-}
+  count() : number {
+      return this.userDataLayer.count();
+  }
 
-getRange(emptyModelWithIDList : List<UserModel>) : Promise<List<UserModel>> {
-    return this.userListDl.getRange(emptyModelWithIDList);
-}
+  addItem(modelItem : UserModel) : Promise<UserModel> {
+    return this.addItem(modelItem);
+  }
 
-count() : number {
-    return this.userListDl.count();
-}
+  removeItem(emptyModelWithID : UserModel) : Promise<UserModel> {
+    return this.removeItem(emptyModelWithID);
+  }
 
-addItem(modelItem : UserModel) : Promise<UserModel> {
-  return this.addItem(modelItem);
-}
-
-removeItem(emptyModelWithID : UserModel) : Promise<UserModel> {
-  return this.removeItem(emptyModelWithID);
-}
-
-saveItem(modelItem : UserModel) : Promise<UserModel> {
-  return this.userListDl.saveItem(modelItem);
-}
-
-
+  saveItem(modelItem : UserModel) : Promise<UserModel> {
+    return this.userDataLayer.saveItem(modelItem);
+  }
 }

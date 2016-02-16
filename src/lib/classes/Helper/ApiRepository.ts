@@ -27,7 +27,7 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
     }
 
     //Build request options
-  private buildReqOptions(requestType : string, url : string, model : T) : any {
+  buildReqOptions(requestType : string, url : string, model : T) : any {
 
     var options = {
       method : requestType,
@@ -45,7 +45,7 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
   /** Makes a request. If model is not null, it will pass it to the request
   as JSON. It will parse the response using the parser function provided,
   encapsulated in a promise */
-   private buildRequestAndParseAsModel (
+   buildRequestAndParseAsModel (
      url : string,
      requestType : string,
      responseParser : (response : string) => T,
@@ -63,7 +63,7 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
    }
 
    //Build a request with list type.
-   private buildRequestAndParseAsModelList(
+   buildRequestAndParseAsModelList(
      url : string,
      requestType : string,
      responseParser : (response : string) => List<T>,
@@ -80,11 +80,11 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
      });
    }
 
-   private oneItemParser(response : string) : T{
+   genericOneItemParser(response : string) : T{
      return (this.modelFactory()).parse<T>(response);
    }
 
-   private manyItemParser(response : string) : List<T> {
+   genericManyItemParser(response : string) : List<T> {
      var items : List<T>  = new List<T>();
      var resp = JSON.parse(response);
      resp.payload.forEach(modelListItem =>
@@ -104,7 +104,7 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
     return this.buildRequestAndParseAsModel(
       this.getUrl() + '/' + emptyModelWithID.getIndex(),
       'GET',
-      this.oneItemParser,
+      this.genericOneItemParser,
       null
     );
   }
@@ -114,7 +114,7 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
     return this.buildRequestAndParseAsModelList(
       this.getUrl(),
       'GET',
-      this.manyItemParser,
+      this.genericManyItemParser,
       null
     );
 }
@@ -123,7 +123,7 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
     return this.buildRequestAndParseAsModel(
       this.getUrl(),
       'POST',
-      this.oneItemParser,
+      this.genericOneItemParser,
       modelItem
     );
 }
@@ -134,7 +134,7 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
     return this.buildRequestAndParseAsModel(
       this.getUrl() + '/' + emptyModelWithID,
       'DELETE',
-      this.oneItemParser,
+      this.genericOneItemParser,
       null
     );
   }
@@ -144,7 +144,7 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
     return this.buildRequestAndParseAsModel(
       this.getUrl(),
       'PUT',
-      this.oneItemParser,
+      this.genericOneItemParser,
       modelItem
     );
   }

@@ -1,4 +1,6 @@
 import {IModel, indexKey} from "../../../lib/interfaces/Model/IModel";
+import {List} from "../../../lib/classes/Helper/List";
+import {AddressModel} from "./AddressModel";
 
 export class UserModel extends IModel  {
   @indexKey
@@ -9,5 +11,5 @@ export class UserModel extends IModel  {
   surname: string;
 
   //TODO: @complex. Also need to see about recursive serialization
-  // addresses: Array<AddressModel>;
+  addresses: List<AddressModel>;
 }
