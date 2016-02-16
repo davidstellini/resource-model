@@ -1,5 +1,4 @@
 import {IModel} from "../Model/IModel";
-import {IDataAsync} from "./IDataAsync";
 import {List} from "../../classes/Helper/List";
 
 export interface IDataRepositoryAsync<T extends IModel>  {
@@ -12,5 +11,4 @@ export interface IDataRepositoryAsync<T extends IModel>  {
   addItem(modelItem : T) : Promise<T>;
   removeItem(emptyModelWithID : T) : Promise<T>;
   saveItem(modelItem : T) : Promise<T>;
-  delete(emptyModelWithID : T): Promise<T>;
 }

@@ -1,6 +1,4 @@
-import {IDataListAsync} from "../Data/IDataListAsync";
 import {IModel} from "../Model/IModel";
-import {IData} from "../Data/IData";
 import {List} from "../../classes/Helper/List";
 
 export interface IServiceAsync {

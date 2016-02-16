@@ -3,17 +3,16 @@ import {UserServiceAsync} from "./Implementation/Service/UserServiceAsync";
 
 import {UserModel} from "./Implementation/Model/UserModel";
 
-var userDataLayer : UserDataRepository = new UserDataRepository();
-var userService : UserServiceAsync = new UserServiceAsync(userDataLayer);
+var userRepository : UserDataRepository = new UserDataRepository();
+var userService : UserServiceAsync = new UserServiceAsync(userRepository);
 
-var userFromApiDataLayer : UserData;
+var userFromApiDataLayer : UserModel;
 
 userService.getAllItems().then(users => {
   userFromApiDataLayer = users.first();
 
-  userFromApiDataLayer.model.surname = "Stellini";
-
-  //userFromApiDataLayer.save();
+  userFromApiDataLayer.surname = "Stellini";
+  userService.saveItem(userFromApiDataLayer);
 });
 
 
