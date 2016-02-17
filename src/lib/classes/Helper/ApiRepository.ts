@@ -4,7 +4,6 @@ import {List} from "../../../lib/classes/Helper/List";
 import * as requestPromise from "request-promise";
 //APIModelList using Request Library
 import {IDataRepositoryAsync} from "../../../lib/interfaces/Data/IDataRepositoryAsync";
-
 import request = require('request');
 
 export abstract class ApiRepository<T extends IModel> implements IDataRepositoryAsync<T>
@@ -148,5 +147,4 @@ export abstract class ApiRepository<T extends IModel> implements IDataRepository
       modelItem
     );
   }
-
 }

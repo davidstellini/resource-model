@@ -1,22 +1,40 @@
 import {UserDataRepository} from "./Implementation/Data/UserDataRepository";
 import {UserServiceAsync} from "./Implementation/Service/UserServiceAsync";
-
+import {AddressDataRepository} from "./Implementation/Data/AddressDataRepository";
 import {UserModel} from "./Implementation/Model/UserModel";
 
-var userRepository : UserDataRepository = new UserDataRepository();
-var userService : UserServiceAsync = new UserServiceAsync(userRepository);
+// var userRepository : UserDataRepository = new UserDataRepository();
+// var addressRepository : AddressDataRepository = new AddressDataRepository();
+//
+//                                                           //This can be solved with dependency injection
+// var userService : UserServiceAsync = new UserServiceAsync(userRepository, addressRepository);
+//
+// var userFromApiDataLayer : UserModel;
+//
+// userService.getAllItems().then(users => {
+//   userFromApiDataLayer = users.first();
+//
+//   userFromApiDataLayer.surname = "Stellini";
+//   userService.saveItem(userFromApiDataLayer);
+// });
+//
+// var emptyModelWithId = new UserModel();
+// emptyModelWithId.id = 1;
+//
+// userService.getUser(emptyModelWithId).then(user =>{
+//   var addresses = user.addresses; //Addresses here
+// })
 
-var userFromApiDataLayer : UserModel;
 
-userService.getAllItems().then(users => {
-  userFromApiDataLayer = users.first();
+class Employee {
 
-  userFromApiDataLayer.surname = "Stellini";
-  userService.saveItem(userFromApiDataLayer);
-});
+
+  className: string = this.constructor.toString().match(/\w+/g)[1];
 
 
 
+}
+console.log(new Employee().className);
 
 // // //import {Resource,BaseUrl} from "../lib/classes/Resource";
 // // // import {IModel, indexKey} from "../lib/interfaces/IModel";

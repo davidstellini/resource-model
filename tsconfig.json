@@ -27,7 +27,6 @@
     "src/examples/Implementation/Service/UserServiceAsync.ts",
     "src/lib/classes/Helper/ApiRepository.ts",
     "src/lib/classes/Helper/List.ts",
-    "src/lib/interfaces/Data/IApiRepository.ts",
     "src/lib/interfaces/Data/IDataRepository.ts",
     "src/lib/interfaces/Data/IDataRepositoryAsync.ts",
     "src/lib/interfaces/Model/ICtor.ts",
