@@ -1,7 +1,7 @@
-import {UserDataRepository} from "./Implementation/Data/UserDataRepository";
-import {UserServiceAsync} from "./Implementation/Service/UserServiceAsync";
-import {AddressDataRepository} from "./Implementation/Data/AddressDataRepository";
-import {UserModel} from "./Implementation/Model/UserModel";
+import {Config} from "./implementation/config/config";
+
+
+
 
 // var userRepository : UserDataRepository = new UserDataRepository();
 // var addressRepository : AddressDataRepository = new AddressDataRepository();
@@ -26,15 +26,6 @@ import {UserModel} from "./Implementation/Model/UserModel";
 // })
 
 
-class Employee {
-
-
-  className: string = this.constructor.toString().match(/\w+/g)[1];
-
-
-
-}
-console.log(new Employee().className);
 
 // // //import {Resource,BaseUrl} from "../lib/classes/Resource";
 // // // import {IModel, indexKey} from "../lib/interfaces/IModel";
