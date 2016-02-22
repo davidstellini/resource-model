@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "start": "node node_modules/.bin/webpack-dev-server --content-base build --port 8090"
+    "start": "parallelshell 'node node_modules/.bin/webpack-dev-server --content-base build --port 8090' 'node node_modules/.bin/json-server src/apiMockService/db.json --port 8091'"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dmifsud/resource-model.git"
+    "url": "git+https://github.com/Davste93/resource-model.git"
   },
   "keywords": [
     "typescript",
@@ -25,9 +25,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dmifsud/resource-model/issues"
+    "url": "https://github.com/Davste93/resource-model/issues"
   },
-  "homepage": "https://github.com/dmifsud/resource-model#readme",
+  "homepage": "https://github.com/Davste93/resource-model#readme",
   "devDependencies": {
     "bluebird": "^3.2.2",
     "cls-bluebird": "^1.0.1",
@@ -35,6 +35,8 @@
     "dojo": "^1.10.4",
     "es6-collections": "^0.5.5",
     "json-loader": "^0.5.4",
+    "json-server": "^0.8.8",
+    "parallelshell": "^2.0.0",
     "request-promise": "^2.0.0",
     "ts-loader": "^0.8.0",
     "typescript": "^1.7.5",

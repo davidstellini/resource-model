@@ -1,4 +1,10 @@
-import {Config} from "./implementation/config/config";
+import {Config, Services} from "./implementation/config/config";
+
+var user = Services.userService.getCompleteUser('1').then((user) => {
+  console.log(user.addresses);
+});
+
+
 
 
 
