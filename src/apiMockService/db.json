@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "David",
+      "surname": "Stellini"
+    },
+    {
+      "id": 1,
+      "name": "David",
+      "surname": "Mifsud"
+    }
+  ],
+  "addresses": [
+    {
+      "id": 0,
+      "AddressLine1": "21, Code Pulit",
+      "AddressLine2": "Birkirkara, BKR4293",
+      "Country": "Malta",
+      "userId": 0
+    },
+    {
+      "id": 1,
+      "AddressLine1": "238, Dar il-Javascript",
+      "AddressLine2": "Qawra, QWR4293",
+      "Country": "Malta",
+      "userId": 1
+    }
+  ]
+}
