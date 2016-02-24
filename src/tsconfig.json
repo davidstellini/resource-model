@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "outDir": "build"
+  },
+  "filesGlob": [
+    "../typings/**/*.d.ts",
+    "./typings/**/*.d.ts",
+    "../src/**/*.ts",
+    "./*.ts"
+  ],
+  "files": [
+    "./typings/bluebird/bluebird.d.ts",
+    "./typings/es6-collections/es6-collections.d.ts",
+    "./typings/form-data/form-data.d.ts",
+    "./typings/node/node.d.ts",
+    "./typings/request-promise/request-promise.d.ts",
+    "./typings/request/request.d.ts",
+    "./typings/tsd.d.ts",
+    "../src/build/tsmvc.d.ts",
+    "../src/classes/helper/ApiParser.ts",
+    "../src/classes/helper/ApiRepository.ts",
+    "../src/classes/helper/DefaultApiParser.ts",
+    "../src/classes/helper/List.ts",
+    "../src/interfaces/data/DataRepository.ts",
+    "../src/interfaces/model/Ctor.ts",
+    "../src/interfaces/model/Model.ts",
+    "../src/interfaces/model/modelFactory.ts",
+    "../src/interfaces/model/Serializable.ts",
+    "../src/interfaces/service/Service.ts",
+    "../src/tsmvc.ts",
+    "../src/typings/bluebird/bluebird.d.ts",
+    "../src/typings/es6-collections/es6-collections.d.ts",
+    "../src/typings/form-data/form-data.d.ts",
+    "../src/typings/node/node.d.ts",
+    "../src/typings/request-promise/request-promise.d.ts",
+    "../src/typings/request/request.d.ts",
+    "../src/typings/tsd.d.ts",
+    "./tsmvc.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}

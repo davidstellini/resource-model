@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "start": "parallelshell 'node node_modules/.bin/webpack-dev-server --content-base build --port 8090' 'node node_modules/.bin/json-server src/apiMockService/db.json --port 8091'"
+    "start": "parallelshell 'node node_modules/.bin/webpack-dev-server --content-base build --port 8090' 'node node_modules/.bin/json-server src/test/apiMockService/db.json --port 8091'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Davste93/resource-model.git"
+  },
+  "typescript": {
+    "definition": "/src/tsmvc.ts"
   },
   "keywords": [
     "typescript",
